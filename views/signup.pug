@@ -1,0 +1,19 @@
+extend layout 
+
+block content
+  h1.text-center Please Register 
+    
+      form.text-center.centered(method='POST', action='/signup/register')
+        .form-group
+          input.form-control(name='name', type='text', placeholder="First Last Name")
+        .form-group
+          input.form-control(name='email' type='text', placeholder="Enter email")
+        .form-group
+          input.form-control(name='username', type='text', placeholder="username")
+        .form-group 
+          input.form-control(name='password' type='password', placeholder='Password')
+        .form-group 
+          input.form-control(name='password2' type='password', placeholder='Repeat Pass')
+        button.btn.btn-primary(type='submit',value='Submit') Register
+          
+      
