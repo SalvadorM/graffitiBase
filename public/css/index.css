@@ -3,3 +3,8 @@
   width: 400px;
   margin: 0 auto;
 }
+.jumbotron {
+  background-image: url('https://images.pexels.com/photos/211122/pexels-photo-211122.jpeg');
+  background-size: cover;
+  height: 60vh;
+}

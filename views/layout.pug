@@ -6,12 +6,38 @@ html
     title Salvador Munoz
     link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO' crossorigin="anonymous")
     link(rel='stylesheet' href='/css/index.css')
-    script(src='https://code.jquery.com/jquery-3.3.1.js', integrity='sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=' crossorigin="anonymous")
   body
+    .contanier
+      nav.navbar.navbar-expand-md.navbar-light.bg-light
+        a.navbar-brand(href='#') MovieBase
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+          ul.navbar-nav.mr-auto
+            li.nav-item
+              a.nav-link(href='https://salvadormunoz.herokuapp.com') Salvador
+                span.sr-only
+            li.nav-item.active
+              a.nav-link(href='/') Home
+          ul.nav.nav-pills
+            if user
+              li.nav-item
+                a.nav-link.border.border-danger(href='/users/logout') Sign Out
+            else 
+              li.nav-item
+                a.nav-link.border.border-info(href='/users/login') Sign In  
+              li.nav-item
+                a.nav-link.border.border-info(href='/users/signup') Register 
     .container 
       != messages('message', locals)
       if errors
         each error, i in errors
-          .alert.alert-danger #{error.msg}
-      block content 
+          if error.msg
+              .alert.alert-danger #{error.msg}
+          else 
+              .alert.alert-danger #{error}
       
+      block content 
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin='anonymous')
