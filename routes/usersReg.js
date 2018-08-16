@@ -30,9 +30,7 @@ router.post('/signup', [
     let errors = validationResult(req);
 
     if(!errors.isEmpty()) {
-      res.render('signup',{
-        errors: errors.array()
-      });
+      res.render('signup',{ errors: errors.array() });
     }else {
       //pull data
       const name = req.body.name;
@@ -85,7 +83,7 @@ router.post('/login', function(req, res, next){
 });
 
  //logged route
- router.get('/logged', function(req, res){
+ router.get('/logged',ensureAuthenticated, function(req, res){
    console.log(req.user);
    res.render('logged');
  });
@@ -94,5 +92,16 @@ router.post('/login', function(req, res, next){
    req.logout();
    res.redirect('/users/login');
  });
+
+ // Access Control
+ function ensureAuthenticated(req, res, next){
+   if(req.isAuthenticated()){
+     return next();
+   } else {
+     req.flash('danger', 'Please login');
+     res.redirect('/users/login');
+   }
+ }
+
 
 module.exports = router;

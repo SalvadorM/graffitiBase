@@ -47,7 +47,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('*', function(req, res, next){
-  res.locals.user = req.user || null;
+  res.locals.user = req.user;
   next();
 });
 
@@ -56,10 +56,11 @@ app.get('/', function (req, res){
   res.render('index');
 });
 
-//users route
+//routes
 var user = require('./routes/usersReg');
+var tag = require('./routes/tags');
 app.use('/users', user);
-
+app.use('/tag', tag);
 
 
 const port = 8080;

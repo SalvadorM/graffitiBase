@@ -22,6 +22,8 @@ html
           ul.nav.nav-pills
             if user
               li.nav-item
+                a.nav-link.active(href='/tag/add') Add Tag
+              li.nav-item
                 a.nav-link.border.border-danger(href='/users/logout') Sign Out
             else 
               li.nav-item
