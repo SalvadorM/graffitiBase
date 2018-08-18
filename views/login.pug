@@ -1,11 +1,11 @@
 extends layout 
 
-block content 
-  h1.text-center Login
-    form.text-center.centered(method='POST', action='/users/login')
-      .form-group
-        input.form-control(name='username', type='text', placeholder="username")
-      .form-group
-        input.form-control(name='password' type='password', placeholder="Password")
-      br
-      input.btn.btn-primary(type='submit',value='Submit')
+block content
+  #Con.container
+    h1.text-center login
+      form#form-section.text-center.centered(method='POST', action='/users/login')
+        .form-group
+          input.form-control(name='username', type='text', placeholder="username")
+        .form-group
+          input.form-control(name='password' type='password', placeholder="Password")
+        input.btn.btn-primary(type='submit',value='Submit')

@@ -10,7 +10,15 @@ const tagSchema = new mongoose.Schema({
       type: String
     }
   },
+  tagname: {
+    type: String,
+    require: true
+  },
   image: {
+    type: String,
+    require: true
+  },
+  imageID: {
     type: String,
     require: true
   },

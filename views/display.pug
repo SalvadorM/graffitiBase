@@ -1,0 +1,18 @@
+extends layout 
+
+block content 
+  br  
+  .container
+    if tags.length
+      .card-group 
+        for tag in tags
+          .col-12.col-md-4
+            .card
+              img.card-img-top(src=tag.image)
+              .card-body 
+                .card-title.text-center #{tag.tagname}
+    else
+      .container.text-center
+        h1 There are no tags to show
+      
+        

@@ -32,39 +32,55 @@ router.post('/signup', [
     if(!errors.isEmpty()) {
       res.render('signup',{ errors: errors.array() });
     }else {
-      //pull data
-      const name = req.body.name;
-      const email = req.body.email;
+      //check for duplicate username
       const username = req.body.username;
-      const passw = req.body.password;
-      const pass2 = req.body.password2;
-
-      var newUser = new User({
-        name:name,
-        email:email,
-        username:username,
-        password:passw
-      });
-
-      bcrypt.genSalt(10, function(err, salt){
-        bcrypt.hash(newUser.password, salt, function(err, hash){
-          if(err){
-            console.log(err);
-          }
-          //store with hash passw
-          newUser.password = hash;
-          newUser.save(function(err){
-            if(err){
-              console.log(err);
-              return;
-            }else {
-              console.log('Added new user');
-              res.redirect('../');
-            }
+      let queryUsername = {
+        username: username
+      }
+      User.count(queryUsername, function(err, doc){
+        if(err) {
+           return console.log(err);
+        }
+        //if username exist
+        if(doc > 0){
+          console.log(doc);
+          res.render('signup', {
+            errors: ['Username Taken']
           });
-        });
-      });
+        }else {
+          //pull data
+          const name = req.body.name;
+          const email = req.body.email;
+          const passw = req.body.password;
+          const pass2 = req.body.password2;
 
+          var newUser = new User({
+            name:name,
+            email:email,
+            username:username,
+            password:passw
+          });
+
+          bcrypt.genSalt(10, function(err, salt){
+            bcrypt.hash(newUser.password, salt, function(err, hash){
+              if(err){
+                console.log(err);
+              }
+              //store with hash passw
+              newUser.password = hash;
+              newUser.save(function(err){
+                if(err){
+                  console.log(err);
+                  return;
+                }else {
+                  console.log('Added new user');
+                  res.redirect('../');
+                }
+              });
+            });
+          });
+        }
+      });
     }
   });
 
@@ -84,7 +100,6 @@ router.post('/login', function(req, res, next){
 
  //logged route
  router.get('/logged',ensureAuthenticated, function(req, res){
-   console.log(req.user);
    res.render('logged');
  });
 

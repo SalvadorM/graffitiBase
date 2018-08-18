@@ -1,4 +1,4 @@
 
 module.exports = {
-  database : 'mongodb://moviedb:1256rs@ds119442.mlab.com:19442/user-movieapp'
+  database : 'mongodb://graffiti:1256rs@ds125932.mlab.com:25932/graffitibase'
 }
