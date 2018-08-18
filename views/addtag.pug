@@ -1,21 +1,18 @@
 extends layout
 
 block content 
-  #Con.container.text-center
-    h1.text-warning Post a tag
-    if user
-      h6.text-center.disabled.text-warning Tag created by #{user.name}
-        form#form-section.text-center.centered(method='POST', action='/tag/add', enctype='multipart/form-data')
-          .form-group
-            input.form-control.text-center(name='tagname',type='text', placeholder="Tag Name")
-          .form-group
-            .input-group 
-              input#file.custome-file-input(name='image', type='file')
-              label.custom-file-label(for='file', type='file', accept="image/*" required) Upload image 
-          br
-          .form-group
-            input.form-control.text-center(name='description', type='text', placeholder="Description")
-          .form-group 
-            input.form-control.text-center(name='location' type='text', placeholder='Location')
-          button.btn.btn-dark(type='submit',value='Submit') Tag It!
-          
+  h1.text-center Enter tag
+  #Con.container
+    form.text-center.centered(method='POST', action='/tag/add', enctype='multipart/form-data')
+     .form-group
+       input.form-control.text-center(name='tagname',type='text', placeholder="Tag Name")
+     .form-group
+       .input-group 
+         input#file.custome-file-input(name='image', type='file')
+         label.custom-file-label(for='file', type='file', accept="image/*" required) Upload image 
+     br
+     .form-group
+       input.form-control.text-center(name='description', type='text', placeholder="Description")
+     .form-group 
+       input.form-control.text-center(name='location' type='text', placeholder='Location')
+     button.btn.btn-light(type='submit',value='Submit') Tag It!
