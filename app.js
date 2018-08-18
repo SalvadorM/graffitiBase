@@ -63,7 +63,7 @@ app.use('/users', user);
 app.use('/tag', tag);
 
 
-const port = 8080;
+const port = process.env.PORT || 8080;
 app.listen(port, function(){
   console.log(`Server started on ${port}`);
 });
