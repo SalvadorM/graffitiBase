@@ -1,0 +1,20 @@
+extends layout 
+
+block content
+  .card-group.text-center
+    .col-12
+      .card
+        img.card-img-top(src=tag.image)
+        .card-body.text-center
+          h1.display-4 Tag by #{tag.author.username}
+          if user
+            h5 Edit tag below
+            if tag.author.id == user.id
+              form.text-center.centered(method='POST', action='/tag/edit/' + tag._id)
+               .form-group
+                 input.form-control.text-center(name='tagname',type='text', value= tag.tagname)
+               .form-group
+                 input.form-control.text-center(name='description', type='text',  value= tag.description)
+               .form-group 
+                 input.form-control.text-center(name='location' type='text', value= tag.location)
+               button.btn.btn-light(type='submit',value='Submit') Tag It!

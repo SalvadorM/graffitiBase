@@ -90,6 +90,7 @@ router.get('/login', function(req, res){
     errors: req.flash('error')
   });
 });
+//login
 router.post('/login', function(req, res, next){
   passport.authenticate('local', {
     successRedirect:'/users/logged',
@@ -113,7 +114,6 @@ router.post('/login', function(req, res, next){
    if(req.isAuthenticated()){
      return next();
    } else {
-     req.flash('danger', 'Please login');
      res.redirect('/users/login');
    }
  }

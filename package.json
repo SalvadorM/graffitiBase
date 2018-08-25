@@ -4,7 +4,8 @@
   "description": "Application with user database",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "dev": "nodemon app.js"
   },
   "author": "Salvador Munoz Castillo",
   "license": "MIT",

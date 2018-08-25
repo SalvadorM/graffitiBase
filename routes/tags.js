@@ -78,13 +78,13 @@ router.post('/add', upload.single('image'),[
   }
 });
 
+
 //display all tags
 router.get('/all', function(req,res){
   Tag.find({}, function(err, allTags){
     if(err){
       console.log(err)
     }else {
-      console.log(allTags);
       res.render('display', {
         tags: allTags
       });
@@ -92,7 +92,32 @@ router.get('/all', function(req,res){
   });
 });
 
-
+//diplay single tag
+router.get('/:id', function(req, res){
+  Tag.findById(req.params.id, function(err, tag){
+    res.render('tag',{
+      tag: tag
+    });
+  });
+});
+//Post edit form
+router.post('/edit/:id', [
+  body('tagname', 'Add name to tag image').isLength({min:1}),
+  body('description', 'Add decrption to tag image').isLength({min:1}),
+  body('location', 'Add location to tag image').isLength({min:1})],
+  function(req, res){
+  var errors = validationResult(req);
+  if(!errors.isEmpty()){
+    Tag.findById(req.params.id, function(err, tag){
+      res.render('tag',{
+        errors: errors.array(),
+        tag: tag
+      });
+    });
+  }else{
+    res.redirect('/')
+  }
+});
 // Access Control
 function ensureAuthenticated(req, res, next){
   if(req.isAuthenticated()){

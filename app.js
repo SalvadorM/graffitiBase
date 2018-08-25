@@ -47,7 +47,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('*', function(req, res, next){
-  res.locals.user = req.user;
+  res.locals.user = req.user || null;
+  res.locals.tag = req.tag || null;
   next();
 });
 
