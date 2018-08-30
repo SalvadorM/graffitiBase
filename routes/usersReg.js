@@ -33,7 +33,7 @@ router.post('/signup', [
       res.render('signup',{ errors: errors.array() });
     }else {
       //check for duplicate username
-      const username = req.body.username;
+      const username = req.body.username.toLowerCase();
       let queryUsername = {
         username: username
       }

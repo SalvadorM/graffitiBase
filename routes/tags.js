@@ -36,10 +36,9 @@ router.post('/add', upload.single('image'),[
   body('image').optional(),
   body('description', 'Add decrption to tag image').isLength({min:1}),
   body('location', 'Add location to tag image').isLength({min:1}),
-], function(req, res){
+  ], function(req, res){
   let errors = validationResult(req);
   if(!errors.isEmpty()){
-    console.log(errors.array());
     res.render('addtag',{
       user: req.user,
       errors: errors.array()
@@ -50,8 +49,7 @@ router.post('/add', upload.single('image'),[
         if(err) {
           req.flash('error', err.message);
           return res.redirect('back');
-        }
-        console.log(result);
+        };
         //create new tag schema
         var newTag = new Tag({
           author: {
@@ -100,6 +98,21 @@ router.get('/:id', function(req, res){
     });
   });
 });
+
+//handle delete
+router.delete('/:id', function(req, res){
+  var query = {_id: req.params.id}
+  Tag.findById(req.params.id, function(err, tag){
+    cloudinary.v2.uploader.destroy(tag.imageID, function(err, result){
+      Tag.remove(query, function(err){
+        if(err) return console.log(err);
+        res.send('Success');
+      });
+    });
+
+  });
+});
+
 //Post edit form
 router.post('/edit/:id', [
   body('tagname', 'Add name to tag image').isLength({min:1}),
@@ -111,13 +124,25 @@ router.post('/edit/:id', [
     Tag.findById(req.params.id, function(err, tag){
       res.render('tag',{
         errors: errors.array(),
-        tag: tag
+        tag: tag,
+        user: req.user,
       });
     });
   }else{
-    res.redirect('/')
+    //send updated data
+    var updateData = {
+      tagname: req.body.tagname,
+      description: req.body.description,
+      location: req.body.location
+    }
+    Tag.findByIdAndUpdate(req.params.id, {$set: updateData}, function(err, tag){
+      if(err) return console.log(err);
+      res.redirect('/tag/' + tag._id);
+    })
   }
 });
+
+
 // Access Control
 function ensureAuthenticated(req, res, next){
   if(req.isAuthenticated()){

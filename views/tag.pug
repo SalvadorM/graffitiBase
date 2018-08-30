@@ -8,8 +8,8 @@ block content
         .card-body.text-center
           h1.display-4 Tag by #{tag.author.username}
           if user
-            h5 Edit tag below
             if tag.author.id == user.id
+              h5 Edit tag below
               form.text-center.centered(method='POST', action='/tag/edit/' + tag._id)
                .form-group
                  input.form-control.text-center(name='tagname',type='text', value= tag.tagname)
@@ -18,3 +18,4 @@ block content
                .form-group 
                  input.form-control.text-center(name='location' type='text', value= tag.location)
                button.btn.btn-light(type='submit',value='Submit') Tag It!
+               a.btn.btn-danger.delete-btn(href='#', data-id= tag._id) Delete
