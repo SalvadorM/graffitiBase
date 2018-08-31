@@ -1,10 +1,19 @@
 @media only screen and (min-width: 768px){
   /*Layout*/
+  body{
+    background: #C9DFDF;
+  }
   /*navigation bar*/
+
   .navbar.navbar-expand-md {
-    background-color: rgba(255,254, 22, .6);
+    background-color: rgba(172,228, 184, 1);
   }
   /*Errors display*/
+  .alert-danger {
+    background-color: #EBACA5;
+    border-color: #F21A01;
+    color: white;
+  }
   #errorContainer{
     margin-top: 20px;
   }
@@ -36,7 +45,7 @@
     border-radius: 10px;
     padding-top: 10px;
     margin-top: 30px;
-    background-color: #3943ff;
+    background-color: white;
     width: 60%;
   }
 }
@@ -44,14 +53,22 @@
 /*small Screen*/
 @media only screen and (max-width: 767px){
   /*Layout*/
+  body{
+    background: #C9DFDF;
+  }
   /*navigation bar*/
   .navbar.navbar-expand-md {
-    background-color: rgba(255,254, 22, .6);
+    background-color: rgba(172,228, 184, 1);
   }
   .navbar-toggler{
     color: #007bff;
   }
   /*errors*/
+  .alert-danger {
+    background-color: #EBACA5;
+    border-color: #F21A01;
+    color: white;
+  }
   #errorContainer{
     margin-top: 20px;
   }
@@ -70,7 +87,6 @@
   #Con {
     border-radius: 10px;
     padding-top: 10px;
-    background-color: #3943ff;
     width: 90%;
     height: 60vh;
     display: flex;
