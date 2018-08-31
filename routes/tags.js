@@ -104,6 +104,7 @@ router.delete('/:id', function(req, res){
   var query = {_id: req.params.id}
   Tag.findById(req.params.id, function(err, tag){
     cloudinary.v2.uploader.destroy(tag.imageID, function(err, result){
+      //the user has to be the same owner as image in order to send delete
       Tag.remove(query, function(err){
         if(err) return console.log(err);
         res.send('Success');
@@ -121,6 +122,7 @@ router.post('/edit/:id', [
   function(req, res){
   var errors = validationResult(req);
   if(!errors.isEmpty()){
+    //return previous page with user info
     Tag.findById(req.params.id, function(err, tag){
       res.render('tag',{
         errors: errors.array(),
@@ -135,6 +137,7 @@ router.post('/edit/:id', [
       description: req.body.description,
       location: req.body.location
     }
+    //the user does matches the photo, so he can update
     Tag.findByIdAndUpdate(req.params.id, {$set: updateData}, function(err, tag){
       if(err) return console.log(err);
       res.redirect('/tag/' + tag._id);
