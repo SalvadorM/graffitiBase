@@ -1,18 +1,26 @@
 @media only screen and (min-width: 768px){
   /*Layout*/
   body{
-    background: #C9DFDF;
+    background: #8EE4AF;
   }
   /*navigation bar*/
-
-  .navbar.navbar-expand-md {
-    background-color: rgba(172,228, 184, 1);
+  .nav-link {
+    font-size: 20px;
+  }
+  #logo {
+    height: 5rem;
+    width: auto;
+  }
+  .border-info, .border-primary {
+    border-color: #05386B!important;
+    margin-right: 5px;
   }
   /*Errors display*/
   .alert-danger {
     background-color: #EBACA5;
     border-color: #F21A01;
     color: white;
+    font-size: 20px;
   }
   #errorContainer{
     margin-top: 20px;
@@ -45,8 +53,12 @@
     border-radius: 10px;
     padding-top: 10px;
     margin-top: 30px;
-    background-color: white;
+    background-color: #EDF5E1;
     width: 60%;
+  }
+  .btn-primary {
+    background-color: #05386B;
+    border-color: #05386B;
   }
 }
 
@@ -57,11 +69,16 @@
     background: #C9DFDF;
   }
   /*navigation bar*/
-  .navbar.navbar-expand-md {
-    background-color: rgba(172,228, 184, 1);
-  }
   .navbar-toggler{
     color: #007bff;
+  }
+  #logo {
+    height: 3rem;
+    width: auto;
+  }
+  .border-info, .border-primary  {
+    border-color: #05386B!important;
+    margin-right: 5px;
   }
   /*errors*/
   .alert-danger {
@@ -95,5 +112,9 @@
   }
   #form-section {
     padding-top: 20px;
+  }
+  .btn-primary {
+    background-color: #05386B;
+    border-color: #05386B;
   }
 }
