@@ -1,3 +1,6 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
 @media only screen and (min-width: 768px){
   /*Layout*/
   body{
@@ -60,6 +63,51 @@
     background-color: #05386B;
     border-color: #05386B;
   }
+  /*Display all tags*/
+  .cardALL {
+    margin: 20px 10px;
+    text-align: center;
+    height: 450px;
+    background-color: rgba(237,245,255,0.5);
+    }
+  .card-wrap {
+    overflow: hidden;
+    min-height: 250px;
+    max-height: 250px;
+  }
+
+  .img-top {
+    min-height: 250px;
+    transform: scale(1.2);
+    transition: 300ms ease-out;
+  }
+  .img-top:hover {
+    transform: scale(1);
+  }
+
+  #link-view {
+    display: inline-block;
+    object-fit: cover;
+    color: #05386B;
+  }
+  #link-view:hover {
+    background-color: rgba(168,168,168,.3);
+    color: black;
+  }
+  /*Single image*/
+  .single {
+    overflow: hidden;
+    width: 65vw;
+    height: auto;
+    margin: auto;
+  }
+  #displayEdit {
+    display: none;
+  }
+  .single-card {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 }
 
 /*small Screen*/
@@ -107,7 +155,6 @@
     width: 90%;
     height: 60vh;
     display: flex;
-    align-items: center;
     justify-content: center
   }
   #form-section {
@@ -117,4 +164,18 @@
     background-color: #05386B;
     border-color: #05386B;
   }
+  /*Display all tags*/
+  .card {
+    margin-top: 20px;
+    text-align: center;
+  }
+  #link-view {
+    display: inline-block;
+    width: 100px;
+    color: #05386B;
+  }
+  #link-view:hover {
+    color: black;
+  }
+
 }

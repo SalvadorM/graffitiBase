@@ -6,12 +6,15 @@ block content
     if tags.length
       .card-group 
         for tag in tags
-          .col-12.col-md-4
-            .card
-              img.card-img-top(src=tag.image)
+          .col-12.col-lg-4.col-md-6.col-sm-12
+            .card.cardALL
+              div.card-wrap
+                img.card-img-top(src=tag.image)
               .card-body.text-center
-                .card-title #{tag.tagname}
-                a.badge.badge-dark(href="/tag/" + tag._id) View Tag
+                h3.card-title #{tag.tagname}
+                p.card-text Uploaded by: #{tag.author.username}
+                p.card-text.text-muted #{tag.location}
+                a#link-view.nav-link.border.border-primary.rounded(href="/tag/" + tag._id) View Tag
     else
       .container.text-center
         h1 There are no tags to show

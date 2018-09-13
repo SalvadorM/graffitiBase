@@ -22,4 +22,21 @@ $(document).ready(function(){
     }
     });
   });
+
+  //show the image
+  $('#file').on('change' , function() {
+            var image_holder = $("#showImage");
+            var reader = new FileReader();
+            reader.readAsDataURL($(this)[0].files[0]);
+            reader.onloadend = function () {
+              image_holder.attr('src', reader.result);
+              image_holder.css({'display':'block', 'width' : '250px'});
+            }
+
+  });
+
+  //show the edit form
+  $('#showEdit').on('click', function(){
+    $('#displayEdit').fadeToggle();
+  });
 });
