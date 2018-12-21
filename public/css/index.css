@@ -149,13 +149,6 @@ body {
     opacity: 0;
     transition: 200ms ease-in;
   }
-  /*index pug*/
-  .jumbotron {
-    background-image: url('https://images.pexels.com/photos/211122/pexels-photo-211122.jpeg');
-    background-size: cover;
-    background-position: center;
-    height: 100vh;
-  }
   /*Login*/
   #Con {
     border-radius: 10px;
@@ -184,6 +177,17 @@ body {
   }
   #link-view:hover {
     color: black;
+  }
+
+  .jumbotron {
+    background-color: #EDF5E1;
+    color: #05386B;
+    overflow: hidden;
+  }
+  .image-fluid {
+    position: relative;
+    width: 100%;
+    margin: auto;
   }
 
 }
