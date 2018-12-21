@@ -2,6 +2,16 @@ extends layout
 
 block content
   .container.text-center
-    h4.display-4 Site Under Work
-    h4.display-6 Users can create an account, and submit tags. 
-    .jumbotron
+    div.jumbotron
+        .jumbo-pic
+          img.image-fluid(src = '/images/jumbo.jpg')
+        h1.display-4 Welcome to GraffitiTags 
+        p.lead There is a beauty to graffiti, we can encounter many types of graffiti outside.
+        hr.my-4
+        p Share the graffiti tag you find the most interesting, create an account to share tags!
+        if user
+          a.btn.btn-primary.btn-large(href='/users/signup') Add a Tag
+        else
+          a.btn.btn-primary.btn-large(href='/users/signup') Register
+
+
