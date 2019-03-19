@@ -18,9 +18,9 @@ const upload = multer({
 });
 //cloudinary
 cloudinary.config({
-  cloud_name: 'sronikle',
-  api_key : '837478342353245',
-  api_secret: 'dcAG3aQRKW-QCdKMZwHtx5tdgxM'
+  cloud_name: '---------',
+  api_key : '--------',
+  api_secret: '----------------'
 });
 
 //request tags/add
